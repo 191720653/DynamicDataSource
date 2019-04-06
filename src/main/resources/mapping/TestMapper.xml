@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.boot.demo.DynamicDataSource.mapper.TestMapper">
+	<resultMap id="BaseResultMap" type="com.spring.boot.demo.DynamicDataSource.bean.Test">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, name
+	</sql>
+
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_test
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.spring.boot.demo.DynamicDataSource.bean.Test">
+		insert into t_test (name)
+		values (#{name,jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateByPrimaryKey">
+		update t_test
+		set name = #{name,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<delete id="delete">
+		delete from t_test
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+</mapper>

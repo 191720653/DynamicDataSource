@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /demo
+
+spring:
+  datasource:
+    # mysql config
+    url: jdbc:mysql://localhost:3306/db_master?characterEncoding=utf-8
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    # use druid config
+    # type: com.alibaba.druid.pool.DruidDataSource
+    # 初始化连接数
+    initialSize: 5
+    # 最小空闲连接数
+    minIdle: 5
+    # 最大空闲连接数
+    maxActive: 20
+    # 获取连接等待超时的时间配置
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小的空闲时间，单位是毫秒
+    minEvictableIdleTimeMillis: 60000
+    # MySQL连接验证查询语句
+    validationQuery: select 1
+    # 指明连接是否被空闲连接回收器（如果有）进行检验，如果检测失败，则连接将被从池中去除
+    testWhileIdle: true
+    # 借出连接时用validationQuery配置的语句进行测试是否可用
+    testOnBorrow: false
+    # 返回连接时用validationQuery配置的语句进行测试是否可用
+    testOnReturn: false
+    # 是否缓存preparedStatement，即PSCache
+    poolPreparedStatements: true
+    # 指定每个连接缓存preparedStatement的最大个数
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计的过滤器，防SQL注入过滤器，日志过滤器
+    filters: stat,wall,slf4j
+    # 合并多个DruidDataSource的监控数据
+    useGlobalDataSourceStat: true
+
+# mybatis config
+mybatis:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
