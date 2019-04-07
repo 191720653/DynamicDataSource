@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 	<!-- 数据库驱动包 -->
-	<classPathEntry	location="C:\maven\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar" />
+	<classPathEntry	location="C:\astudy\java\maven\repository\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar" />
 	<context id="DBMasterTables" targetRuntime="MyBatis3">
 		<commentGenerator>
 			<property name="suppressDate" value="true" />

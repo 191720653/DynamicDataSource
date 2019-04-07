@@ -2,6 +2,7 @@ package com.spring.boot.demo.DynamicDataSource.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.boot.demo.DynamicDataSource.bean.Test;
 import com.spring.boot.demo.DynamicDataSource.data.source.annotation.DataSourceAnnotation;
@@ -30,10 +31,13 @@ public class TestServiceImpl implements ITestService {
 	}
 
 	@Override
+	@Transactional
 	@DataSourceAnnotation // 不指定，默认主库
 	public int updateByPrimaryKey(Test test) {
 		// TODO Auto-generated method stub
-		return testMapper.updateByPrimaryKey(test);
+		int result = testMapper.updateByPrimaryKey(test);
+		// result = result / 0; // 模拟异常，事务正常回滚
+		return result;
 	}
 
 	@Override // 无注解，默认主库

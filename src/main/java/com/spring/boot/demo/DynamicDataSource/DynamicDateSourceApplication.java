@@ -36,6 +36,8 @@ public class DynamicDateSourceApplication {
 		select.setName("update");
 		int update = iTestService.updateByPrimaryKey(select);
 		System.out.println(update);
+		select = iTestService.select(id);
+		System.out.println(select.toString());
 		// delete
 		int delete = iTestService.delete(id);
 		System.out.println(delete);
